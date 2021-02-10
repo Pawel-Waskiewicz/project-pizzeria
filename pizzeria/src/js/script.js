@@ -452,8 +452,8 @@
 
       cartProduct.dom.wrapper.remove();
 
-      //const indexOfProducts = thisCart.products.indexOf(cartProduct);
-      thisCart.products.splice(0, 1);
+      const indexOfProducts = thisCart.products.indexOf(cartProduct);
+      thisCart.products.splice(indexOfProducts, 1);
      
       thisCart.update();
     }
