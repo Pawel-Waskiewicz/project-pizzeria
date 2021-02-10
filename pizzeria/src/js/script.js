@@ -396,8 +396,8 @@
         thisCart.update();  
       });
 
-      thisCart.dom.productList.addEventListener('remove', function(){
-        
+      thisCart.dom.productList.addEventListener('remove', function(event){
+        thisCart.remove(event.detail.cartProduct);
       });
     }
 
@@ -447,10 +447,15 @@
       thisCart.update();
     }
 
-    remove(){
-      //const thisCart = this;
+    remove(cartProduct){
+      const thisCart = this;
 
-      //const productRemove = thisCart.element.querySelector(select.cartProduct.remove);
+      cartProduct.dom.wrapper.remove();
+
+      //const indexOfProducts = thisCart.products.indexOf(cartProduct);
+      thisCart.products.splice(0, 1);
+     
+      thisCart.update();
     }
   }
 
