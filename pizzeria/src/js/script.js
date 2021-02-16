@@ -477,19 +477,20 @@
 
       const url = settings.db.url + '/' + settings.db.order;
       const deliveryFee = settings.cart.defaultDeliveryFee;
-      const payload = thisCart.payload;
+      const payload = {};
 
-      thisCart.payload = {};
-      thisCart.payload.address = thisCart.dom.address.value;
-      thisCart.payload.phone = thisCart.dom.phone.value;
-      thisCart.payload.totalPrice = thisCart.totalPrice;
-      thisCart.payload.subtotalPrice = thisCart.subtotalPrice;
-      thisCart.payload.totalNumber = thisCart.totalNumber;
-      thisCart.payload.deliveryFee = deliveryFee;
-      thisCart.payload.products = [];
+      
+      payload.address = thisCart.dom.address.value;
+      payload.phone = thisCart.dom.phone.value;
+      payload.totalPrice = thisCart.totalPrice;
+      payload.subtotalPrice = thisCart.subtotalPrice;
+      payload.totalNumber = thisCart.totalNumber;
+      payload.deliveryFee = deliveryFee;
+      payload.products = [];
+      console.log('payload:', payload);
 
       for(let prod of thisCart.products) {
-        this.payload.products.push(prod.getData());
+        payload.products.push(prod.getData());
       }
 
       const options = {
