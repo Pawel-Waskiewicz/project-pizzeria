@@ -13,7 +13,7 @@ class Booking {
 
     const generatedHTML = templates.bookingWidget();
 
-    thisBooking.dom = [];
+    thisBooking.dom = {};
     thisBooking.dom.wrapper = element;
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
