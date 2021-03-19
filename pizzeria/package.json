@@ -13,7 +13,7 @@
         "test:html": "globstar nu-html-checker dist/*.html",
         "test:js": "eslint src/js/",
         "test:scss": "stylelint src/sass/",
-        "test:fix": "stylelint src/sass/ --fix", 
+        "test:fix": "stylelint src/sass/ --fix",
         "build": "npm-run-all build:* test",
         "build:clean": "mkdirp dist && rm -r dist && mkdirp dist",
         "build:copy": "copyfiles -a -u 1 -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" dist",
@@ -31,6 +31,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "flatpickr": "^4.6.9",
         "json-server": "^0.16.3"
     },
     "devDependencies": {
