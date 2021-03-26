@@ -173,6 +173,7 @@ class Booking {
     thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = document.querySelectorAll(select.booking.tables);
     thisBooking.dom.allTables = document.querySelector(select.booking.allTables);
+    //thisBooking.dom.allWidgets = document.querySelector(select.widgets);
   
   }
   initTables(){
@@ -184,10 +185,10 @@ class Booking {
     if(clickedElement.classList.contains(classNames.booking.tableBooked)){
       alert('This table is booked');
     } 
+    
     if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
       const idTable = clickedElement.getAttribute('data-table');
       thisBooking.selectedTable = idTable;
-      clickedElement.classList.add(classNames.booking.tableSelected);
       const tableList = thisBooking.dom.tables;
 
       for(let table of tableList){
@@ -196,8 +197,9 @@ class Booking {
       clickedElement.classList.add(classNames.booking.tableSelected);
     }
 
-    console.log('clickedElement:', clickedElement );
+   
   }
+
 
   initWidgets(){
     const thisBooking = this;
@@ -213,6 +215,14 @@ class Booking {
     thisBooking.dom.allTables.addEventListener('click', function(){
       thisBooking.initTables();
     });
+
+    thisBooking.dom.hourPicker.addEventListener('click', function(){
+      thisBooking.initTables();
+    });
+    thisBooking.dom.datePicker.addEventListener('click', function(){
+      thisBooking.initTables();
+    });
+    
   }
 }
 export default Booking;

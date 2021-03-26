@@ -1,6 +1,7 @@
 import {select, settings} from '../settings.js';
 import BaseWidget from '../components/BaseWidget.js';
 
+
 class AmountWidget extends BaseWidget {
   constructor(element){
     super(element, settings.amountWidget.defaultValue);
@@ -39,14 +40,19 @@ class AmountWidget extends BaseWidget {
 
     thisWidget.dom.input.addEventListener('change', function(){
       thisWidget.setValue(thisWidget.dom.input.value);
+      thisWidget.initTables();
+
     });
     thisWidget.dom.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
       thisWidget.setValue(thisWidget.value-1); 
+      thisWidget.initTables();
+
     });
     thisWidget.dom.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
       thisWidget.setValue(thisWidget.value+1);
+      thisWidget.initTables();
     });
   }
 
