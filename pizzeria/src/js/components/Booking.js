@@ -173,7 +173,11 @@ class Booking {
     thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = document.querySelectorAll(select.booking.tables);
     thisBooking.dom.allTables = document.querySelector(select.booking.allTables);
+    thisBooking.dom.phone = document.querySelector(select.booking.phone);
+    thisBooking.dom.address = document.querySelector(select.booking.address);
+    thisBooking.dom.starters = document.querySelectorAll(select.booking.starters);
     //thisBooking.dom.allWidgets = document.querySelector(select.widgets);
+  
   
   }
   initTables(){
@@ -182,11 +186,15 @@ class Booking {
     const clickedElement = event.target;
     console.log('clickedElement:', clickedElement);
 
+    
     if(clickedElement.classList.contains(classNames.booking.tableBooked)){
       alert('This table is booked');
     } 
+    if(clickedElement.classList.contains(classNames.booking.tableSelected)){
+      clickedElement.classList.remove(classNames.booking.tableSelected);
+    }
     
-    if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
+    if(!clickedElement.classList.contains(classNames.booking.tableBooked) && clickedElement.classList.contains('table')){
       const idTable = clickedElement.getAttribute('data-table');
       thisBooking.selectedTable = idTable;
       const tableList = thisBooking.dom.tables;
@@ -194,7 +202,10 @@ class Booking {
       for(let table of tableList){
         table.classList.remove(classNames.booking.tableSelected);
       }
+      
       clickedElement.classList.add(classNames.booking.tableSelected);
+
+      
     }
 
    
@@ -215,14 +226,78 @@ class Booking {
     thisBooking.dom.allTables.addEventListener('click', function(){
       thisBooking.initTables();
     });
-
-    thisBooking.dom.hourPicker.addEventListener('click', function(){
-      thisBooking.initTables();
+    thisBooking.dom.peopleAmount.addEventListener('click', function(){
+      const tableList = thisBooking.dom.tables;
+      for(let table of tableList){
+        table.classList.remove(classNames.booking.tableSelected);
+      }
+    });
+    thisBooking.dom.hoursAmount.addEventListener('click', function(){
+      const tableList = thisBooking.dom.tables;
+      for(let table of tableList){
+        table.classList.remove(classNames.booking.tableSelected);
+      }
     });
     thisBooking.dom.datePicker.addEventListener('click', function(){
-      thisBooking.initTables();
+      const tableList = thisBooking.dom.tables;
+      for(let table of tableList){
+        table.classList.remove(classNames.booking.tableSelected);
+      }
     });
+    thisBooking.dom.hourPicker.addEventListener('click', function(){
+      const tableList = thisBooking.dom.tables;
+      for(let table of tableList){
+        table.classList.remove(classNames.booking.tableSelected);
+      }
+    });
+
+
+    
+
+    thisBooking.sendBooking();
     
   }
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+
+    const bookingData = {};
+
+    bookingData.date = thisBooking.datePicker.value;
+    bookingData.hour = thisBooking.hourPicker.value;
+    bookingData.table = thisBooking.selectedTable;
+    bookingData.duration = thisBooking.hoursAmount.value;
+    bookingData.ppl = thisBooking.peopleAmount.value;
+    bookingData.starters = [];
+    bookingData.phone = thisBooking.dom.phone.value;
+    bookingData.address = thisBooking.dom.address.value;
+    
+
+    for(let starter of thisBooking.dom.starters){
+      if(starter.checked == true){
+        bookingData.starters.push(starter);
+        
+      }
+    } 
+    
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookingData),
+    };
+
+    fetch(url, options)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+
+    console.log('bookingData', bookingData); 
+  }
+ 
 }
 export default Booking;
