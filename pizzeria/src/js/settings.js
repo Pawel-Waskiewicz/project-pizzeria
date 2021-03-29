@@ -4,6 +4,7 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product', // CODE ADDED
     bookingWidget: '#template-booking-widget',
+    homeWidget: '#template-home-widget',
 
   },
   containerOf: {
@@ -11,6 +12,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    home: '.home-wrapper',
 
   },
   all: {
@@ -66,9 +68,13 @@ export const select = {
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
     allTables: '.floor-plan',
-    phone: '[name="phone"]',
-    address: '[name="address"]',
+    phone: '[name="Phone"]',
+    address: '[name="Address"]',
     starters: '[name="starter"]',
+    sumbitButton: '.btn-submit',
+    form: '.booking-form',
+    formSubmit: '.booking-form [type="submit"]',
+
   },
   nav: {
     links: '.main-nav a',
@@ -145,4 +151,5 @@ export const templates = {
    
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
 
+  
 };

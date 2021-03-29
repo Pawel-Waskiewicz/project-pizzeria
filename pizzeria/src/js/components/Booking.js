@@ -176,7 +176,7 @@ class Booking {
     thisBooking.dom.phone = document.querySelector(select.booking.phone);
     thisBooking.dom.address = document.querySelector(select.booking.address);
     thisBooking.dom.starters = document.querySelectorAll(select.booking.starters);
-    //thisBooking.dom.allWidgets = document.querySelector(select.widgets);
+    thisBooking.dom.form = document.querySelector(select.booking.form);
   
   
   }
@@ -219,6 +219,11 @@ class Booking {
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
+    thisBooking.dom.form.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
+
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
@@ -250,11 +255,6 @@ class Booking {
         table.classList.remove(classNames.booking.tableSelected);
       }
     });
-
-
-    
-
-    thisBooking.sendBooking();
     
   }
   sendBooking(){
@@ -282,6 +282,7 @@ class Booking {
     } 
     
     const options = {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -294,6 +295,7 @@ class Booking {
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
+        thisBooking.makeBooked();
       });
 
     console.log('bookingData', bookingData); 
