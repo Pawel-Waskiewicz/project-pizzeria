@@ -12,7 +12,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
-    home: '.home-wrapper',
+    home: '#home',
 
   },
   all: {
@@ -78,6 +78,7 @@ export const select = {
   },
   home: {
     orderButton: '.order-button',
+    bookButton: '.book-button',
   },
   nav: {
     links: '.main-nav a',

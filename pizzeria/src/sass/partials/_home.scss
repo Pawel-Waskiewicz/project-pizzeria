@@ -19,8 +19,7 @@
 }
   
 .column-header {
-  flex: 50%;
-  margin-right: 4px;
+  flex: 49%;
   text-align: center;
   color: $color-light;
   background-size: 100%;
@@ -36,7 +35,7 @@
 }
 
 .small-text{
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .showing{
@@ -56,6 +55,7 @@
     margin: 0;
     padding: 0;
     font-size: 24px;
+    padding: 10px 0 0 0;
   }
 
   p {
@@ -75,20 +75,24 @@
   font-family: $font-header;
   animation-duration: 2s;
   width: 100%; 
+  margin-right: 4px;
 }
+
 
 .child {
   align-self: flex-end;
   
   animation-duration: 2s;
   width: 100%;
- 
-  //animation-iteration-count: infinite;
-  //transform-origin: bottom;
+  .order{
+    font-size: 21px;
+    font-weight: $font-bold;
+  }
 }
 
 .child:hover .showing{
   opacity: 1;
+  
 }
 
 .bounce:hover {

@@ -2,7 +2,7 @@ import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js'; 
-//import Home from './components/Home.js';
+
 
 const app = {
   
@@ -116,6 +116,8 @@ const app = {
     thisApp.initCart();
     
     thisApp.initBooking();
+
+    thisApp.initHome();
   },
 
   
@@ -127,12 +129,33 @@ const app = {
     new Booking(bookingContainer);
   },
 
-  /*initHome: function(){
+  initHome: function(){
+    const thisApp = this;
     
-    const homeContainer = document.querySelector(select.containerOf.home);
     
-    new Home(homeContainer);
-  },*/
+
+    const orderButton = document.querySelector(select.home.orderButton);
+
+    orderButton.addEventListener('click', function(){
+      thisApp.activatePage('order');
+    });
+
+    const bookButton = document.querySelector(select.home.bookButton);
+
+    bookButton.addEventListener('click', function(){
+      thisApp.activatePage('booking');
+    });
+
+    const elem = document.querySelector('.carousel');
+    const flkty = new Flickity( elem, {
+      // options
+      cellAlign: 'left',
+      contain: true,
+      prevNextButtons: false,
+    });
+
+
+  },
   
 };
 
