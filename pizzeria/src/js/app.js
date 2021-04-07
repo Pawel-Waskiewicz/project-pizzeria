@@ -2,6 +2,7 @@ import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js'; 
+//import Home from './components/Home.js';
 
 const app = {
   
@@ -37,6 +38,8 @@ const app = {
         window.location.hash = '#/' + id;
       }); 
     } 
+    
+    
   },
 
   activatePage: function(pageId){
@@ -46,6 +49,7 @@ const app = {
     for(let page of thisApp.pages){
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
+    
     /* add class "active" to matching link, remove from non matching */
     for(let link of thisApp.navLinks){
       link.classList.toggle(
@@ -53,6 +57,7 @@ const app = {
         link.getAttribute('href') == '#' + pageId
       );
     }
+    
   },
 
   initCart: function(){
@@ -122,6 +127,12 @@ const app = {
     new Booking(bookingContainer);
   },
 
+  /*initHome: function(){
+    
+    const homeContainer = document.querySelector(select.containerOf.home);
+    
+    new Home(homeContainer);
+  },*/
   
 };
 

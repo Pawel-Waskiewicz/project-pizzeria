@@ -76,6 +76,9 @@ export const select = {
     formSubmit: '.booking-form [type="submit"]',
 
   },
+  home: {
+    orderButton: '.order-button',
+  },
   nav: {
     links: '.main-nav a',
   },

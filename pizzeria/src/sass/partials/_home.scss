@@ -1,0 +1,192 @@
+
+.all-section {
+  margin-top: 42px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: $color-light;
+}
+
+.section {
+  padding-top: 70px;
+}
+/* HEADER */  
+
+.row-header {
+  display: flex;
+    
+}
+  
+.column-header {
+  flex: 50%;
+  margin-right: 4px;
+  text-align: center;
+  color: $color-light;
+  background-size: 100%;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-family: $font-header; 
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.small-text{
+  font-size: 12px;
+}
+
+.showing{
+  opacity: 0;
+}
+
+
+.third-box  {
+  flex: 100%;
+  background-color: $color-main;
+  color: $color-light;
+  text-align: center;
+  font-family: $font-header;
+  height: 100px;
+
+  h2{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+  }
+}
+
+.first-box {
+  border-bottom: 2px solid #000000;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  right: 100px;
+  align-self: flex-end;
+  font-family: $font-header;
+  animation-duration: 2s;
+  width: 100%; 
+}
+
+.child {
+  align-self: flex-end;
+  
+  animation-duration: 2s;
+  width: 100%;
+ 
+  //animation-iteration-count: infinite;
+  //transform-origin: bottom;
+}
+
+.child:hover .showing{
+  opacity: 1;
+}
+
+.bounce:hover {
+  animation-name: bounce;
+  animation-timing-function: ease;
+}
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+
+  50%  { transform: translateY(-20px); }
+
+  100% { transform: translateY(-20px); }
+}
+
+/* CAROUSEL */
+
+.carousel-cell {
+  width: 100%; /* full width */
+  height: 300px; /* height of carousel */
+  margin-right: 10px;
+
+  img{
+    float: left;
+    width: 50%;
+    height: 90%;
+    padding-right: 30px;
+  }
+    
+}
+
+/* GALLERY */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  flex: 25%;
+  max-width: 33%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+  
+.pizza {
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    
+  }
+
+  i {
+    position: absolute;
+    left: 55%;
+    top: 50%;
+    color: $color-main;
+
+    &.grow {
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        transform: scale(2.0);
+      }
+    }
+    
+  }
+
+  .left-icon{
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    
+  }
+
+  
+}
+
+.pizza:hover .gallery {
+  opacity: 0.8;
+}
+
+.pizza:hover .overlay {
+  opacity: 1;
+    
+}
+
