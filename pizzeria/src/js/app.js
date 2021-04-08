@@ -146,12 +146,15 @@ const app = {
       thisApp.activatePage('booking');
     });
 
+    
     const elem = document.querySelector('.carousel');
-    const flkty = new Flickity( elem, {
+    // eslint-disable-next-line no-undef
+    new Flickity( elem, {
       // options
       cellAlign: 'left',
       contain: true,
       prevNextButtons: false,
+      autoPlay: 3000,
     });
 
 
