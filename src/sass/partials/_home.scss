@@ -76,7 +76,7 @@
 
   animation-duration: 2s;
   width: 100%; 
-  
+
   margin-right: 5px;
 }
 
@@ -102,6 +102,7 @@
   animation-name: bounce;
   animation-timing-function: ease;
 }
+
 @keyframes bounce {
   0%   { transform: translateY(0); }
 
